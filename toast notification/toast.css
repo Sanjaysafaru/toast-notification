@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+*{
+    font-family: Poppins, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #20262E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+li{
+    list-style-type: none;
+}
+span{
+    font-weight: 500;
+}
+.notifications{
+    width: 360px;  
+    position: fixed; 
+    top: 30px;
+    right:20px;
+}
+.notifications :where(.toast, .column) {
+    display: flex;
+    align-items: center;
+}
+.toast{
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    height:50px;
+}
+.notifications .toast{
+    padding:15px;
+    border-radius: 5px;
+    justify-content: space-between;
+    animation: show-toast 1.5s ease forwards;
+}
+@keyframes show-toast {
+    0%{
+        transform: translateX(100%);
+    }
+    40%{
+        transform: translateX(-5%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-10px);
+    }
+}
+.notifications .toast.hide{
+    animation: hide-toast 0.5s ease forwards;
+}
+@keyframes hide-toast {
+    0%{
+        transform: translateX(-10px);
+    }
+    40%{
+        transform: translateX(0%);
+    }
+    80%{
+        transform: translateX(-5%);
+    }
+    100%{
+        transform: translateX(120%);
+    }
+}
+
+#tickl{
+    padding: 3px;
+    background-color:#03C988 ;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+#errorl{
+    padding: 3px;
+    background-color:#FF0032 ;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+#warningl{
+    margin-right: 10px;
+}
+#infol{
+    padding: 3px;
+    background-color:#5BC0F8 ;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+#into{
+    height: fit-content;
+    margin:7px 0 ;
+    cursor: pointer;
+}
+#into:hover{
+    filter:brightness(50%);
+}
+#into:active{
+    transform: scale(0.8);
+}
+.toast::before{
+    position:absolute;
+    content: "";
+    height:4px;
+    width: 100%;
+    left: 2.5px;
+    bottom: 0;
+    animation: progress 5s linear forwards;
+}
+@keyframes progress {
+    100%{
+        width: 0;
+    }
+}
+.btn{
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 120%;
+    font-weight: 700;
+    color: aliceblue;
+    border-radius: 10px;
+    margin: 7px;
+    cursor: pointer;
+}
+#success , .toast.success::before{
+    background: #03C988;
+}
+#error, .toast.error::before{
+    background: #FF0032;
+}
+#warning, .toast.toast.warning::before{
+    background: #ffc107;
+}
+#info, .toast.info::before{
+    background: #5BC0F8;
+}
+#success:active,#error:active,#warning:active,#info:active{
+    transform: scale(0.96);
+    filter: brightness(110%);
+}
